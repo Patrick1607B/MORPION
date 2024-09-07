@@ -1,0 +1,91 @@
+body {
+    font-family: 'Shadows Into Light', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.morpion {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 0;
+    position: relative;
+}
+
+.case {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    /* border: 3px solid black; */
+    position: relative;
+}
+
+.case::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid black;
+    transform: rotate(calc(var(--rotation, 0deg)));
+}
+
+.case:nth-child(odd)::before {
+    --rotation: -2deg;
+}
+
+.case:nth-child(even)::before {
+    --rotation: 2deg;
+}
+
+.case:nth-child(1),
+.case:nth-child(2),
+.case:nth-child(3) {
+    border-bottom: none; /* Supprimer les bordures entre les lignes */
+}
+
+.case:nth-child(4),
+.case:nth-child(5),
+.case:nth-child(6) {
+    border-top: none;
+    border-bottom: none;
+}
+
+.case:nth-child(7),
+.case:nth-child(8),
+.case:nth-child(9) {
+    border-top: none;
+}
+
+.case:nth-child(1),
+.case:nth-child(4),
+.case:nth-child(7) {
+    border-right: none;
+}
+
+.case:nth-child(2),
+.case:nth-child(5),
+.case:nth-child(8) {
+    border-left: none;
+    border-right: none;
+}
+
+.case:nth-child(3),
+.case:nth-child(6),
+.case:nth-child(9) {
+    border-left: none;
+}
+
+
+
+
