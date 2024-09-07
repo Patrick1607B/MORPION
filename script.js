@@ -20,9 +20,7 @@ form.addEventListener('submit', (event) => {
     // Récupère les valeurs des champs
     const name = document.getElementById('name').value;
 
-    // Affiche les valeurs dans la console
     // console.log('Nom:', name);
-    // utilise la valeur récupérée comme tu le souhaites
 });
 
 function getRandomInt(max) {
