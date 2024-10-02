@@ -13,6 +13,10 @@ h1 {
     margin-bottom: 20px;
 }
 
+#player-restart {
+    display: none;
+}
+
 .morpion {
     display: grid;
     grid-template-columns: repeat(3, 120px);
@@ -27,6 +31,9 @@ h1 {
     background-color: white;
     /* border: 3px solid black; */
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .case::before {
@@ -45,7 +52,7 @@ h1 {
 }
 
 .case:nth-child(even)::before {
-    --rotation: 2deg;
+    --rotation: 12deg;
 }
 
 .case:nth-child(1),
