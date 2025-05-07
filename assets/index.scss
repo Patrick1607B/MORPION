@@ -1,0 +1,142 @@
+// Variables
+$bg-carton: url('./istockphoto-1200880067-612x612.jpg'); // Ton fond en carton
+$handwritten-font: 'Permanent Marker', cursive; // Police manuscrite
+$hand-drawn-border: #3b3a36; // Couleur pour bordures de style feutre
+$grid-line-color: #3b3a36; // Couleur pour les lignes de la grille (feutre)
+
+// Global Styles
+body {
+  background-image: $bg-carton;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+  z-index: 0; // Arrière-plan en carton sous tout le reste
+}
+
+// Box contenant la grille ou autres éléments (pour la mise en page)
+.container {
+  position: relative;
+  z-index: 10; // Placer les éléments interactifs au-dessus du fond
+  display: flex;
+  flex-direction: column; // Organiser en colonne
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.5); // Transparent pour voir le fond
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%; // Ajuster la largeur pour la vue en colonne
+  max-width: 1000px;
+}
+
+// Titre avec effet de feutre
+h1, h2, h3 {
+  font-family: $handwritten-font;
+  color: #2f4f4f;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 10;
+  margin: 10px 0;
+}
+
+// Champs de texte (input) avec bordure dessinée à la main
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  font-family: $handwritten-font;
+  font-size: 1.1rem;
+  padding: 10px;
+  width: 100%;
+  background-color: transparent; // Fond transparent pour voir le carton
+  border: 3px solid $hand-drawn-border;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 15px 0;
+  transition: all 0.3s ease;
+  z-index: 10; // Placer les champs au-dessus du fond
+
+  &:focus {
+    outline: none;
+    border-color: #ff6347; // Changer la couleur de la bordure au focus
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.6);
+  }
+}
+
+// Effet de "fait à la main" pour la grille de morpion
+.morpion {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px; // Espacement entre les cases
+  position: relative;
+  z-index: 10; // Placer la grille au-dessus du fond
+}
+
+.case {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; // Fond transparent pour voir le carton
+  border: 2px dashed $grid-line-color; // Trait fait à la main
+  border-radius: 10px;
+  font-size: 2rem;
+  color: #333;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.05);
+  }
+
+  &.won {
+    border: 2px solid #ff6347;
+  }
+}
+
+// Style des traits de la grille (moins parfaits, effet irrégulier)
+.morpion::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 5px solid transparent;
+  border-top: 5px dashed $grid-line-color;
+  border-left: 5px dashed $grid-line-color;
+  z-index: 1;
+}
+
+// Effet sur les boutons
+button {
+  padding: 12px 25px;
+  background-color: #ff7f50;
+  font-family: $handwritten-font;
+  font-size: 1.5rem;
+  border: 2px solid $hand-drawn-border;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  z-index: 10;
+
+  &:hover {
+    background-color: #ff6347;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
